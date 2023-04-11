@@ -1,5 +1,5 @@
 {
-    "name": "meet-kinksters/php-matrix-sdk",
+    "name": "lordgurke/php-matrix-sdk",
     "type": "library",
     "description": "PHP SDK for interacting with Matrix/Synapse.",
     "keywords": [
@@ -8,7 +8,7 @@
         "Synapse",
         "PHP"
     ],
-    "homepage": "https://github.com/meet-kinksters/php-matrix-sdk",
+    "homepage": "https://github.com/lordgurke/php-matrix-sdk",
     "license": "MIT",
     "authors": [
         {
@@ -22,11 +22,17 @@
             "email": "brad@kinksters.dating",
             "homepage": "https://github.com/bradjones1",
             "role": "Developer"
+        },
+        {
+            "name": "Max Grobecker",
+            "email": "max@maxderdepp.de",
+            "role": "Developer"
         }
     ],
     "replace": {
         "aryess/phpmatrixsdk": "self.version",
-        "aryess/php-matrix-sdk": "self.version"
+        "aryess/php-matrix-sdk": "self.version",
+        "meet-kinksters/php-matrix-sdk": "self.version"
     },
     "require": {
         "php": "~7.4|^8",
