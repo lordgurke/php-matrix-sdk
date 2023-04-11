@@ -3,7 +3,7 @@
 ![Software License][ico-downloads]
 
 This is a Matrix client-server SDK for php 7.4+, initially copied from
-[matrix-org/matrix-python-sdk][python-pck], then forked by lordgurke.
+[matrix-org/matrix-python-sdk][python-pck], then forked by lordgurke to add imporvements and bugfixes.
 
 This package is still a work in progress, and at the current time, not everything has been ported:
 - Missing E2E encryption, need php bindings for the OLM library
