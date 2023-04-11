@@ -45,20 +45,20 @@ $matrix = new MatrixHttpApi("http://localhost:8008", $sometoken);
 $response = $matrix->sendMessage("!roomid:matrix.org", "Hello!");
 ```
 
-##Structure
+## Structure
 The SDK is split into two modules: ``api`` and ``client``.
 
-###API
+### API
 This contains the raw HTTP API calls and has minimal business logic. You can
 set the access token (``token``) to use for requests as well as set a custom
 transaction ID (``txn_id``) which will be incremented for each request.
 
-###Client
+### Client
 This encapsulates the API module and provides object models such as ``Room``.
 
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) and [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) for details.
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ## Security
 
