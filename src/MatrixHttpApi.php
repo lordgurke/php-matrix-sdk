@@ -495,7 +495,25 @@ class MatrixHttpApi {
      */
     public function sendReceipt(string $roomId, string $eventId) {
         $body = [
-            'm.fully_read' => $eventId,
+            'm.read' => $eventId,
+        ];
+
+        return $this->sendMessageEvent($roomId, 'read_markers', $body);
+    }
+
+
+    /**
+     * Mark all messages as read.
+     *
+     * @param string $roomId
+     * @return array|string
+     * @throws MatrixException
+     * @throws MatrixHttpLibException
+     * @throws MatrixRequestException
+     */
+    public function sendReceiptFullyRead(string $roomId) {
+        $body = [
+            'm.fully_read' => true,
         ];
 
         return $this->sendMessageEvent($roomId, 'read_markers', $body);
@@ -916,7 +934,13 @@ class MatrixHttpApi {
             ],
         ];
 
-        return array_merge($base['m.relates_to'], $additionalData);
+        if(count($additionalData)) {
+            foreach($additionalData as $key => $value) {
+                $base['m.relates_to'][$key] = $value;
+            }
+        }
+
+        return $base;
     }
 
     private function getEmoteBody(string $textContent): array {
