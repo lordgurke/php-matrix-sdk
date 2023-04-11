@@ -459,6 +459,49 @@ class MatrixHttpApi {
         return $this->sendMessageEvent($roomId, 'm.room.message', $body, null, $timestamp);
     }
 
+
+    /**
+     * Send an emoji reaction to an event
+     *
+     * @param string $roomId The room ID to send the event in
+     * @param string $eventId The event ID to which react to
+     * @param string $emoji The UTF-8 representation of a single emoji
+     * @return array|string
+     * @throws MatrixException
+     * @throws MatrixHttpLibException
+     * @throws MatrixRequestException
+     * @throws ValidationException
+     */
+    public function sendEmojiReaction(string $roomId, string $eventId, string $emoji) {
+        if(mb_strlen($emoji) !== 1) {
+            throw new ValidationException('Reaction must be a single UTF-8 (also multibyte) char');
+        }
+
+        $body = $this->getRelationshipBody('m.annotation', $eventId, ['key' => $emoji]);
+
+        return $this->sendMessageEvent($roomId, 'm.reaction', $body);
+    }
+
+
+    /**
+     * Places the "read" marker in a chat to the position of the given event ID
+     *
+     * @param string $roomId The room ID to send the event in
+     * @param string $eventId The event ID to set the read marker to
+     * @return array|string
+     * @throws MatrixException
+     * @throws MatrixHttpLibException
+     * @throws MatrixRequestException
+     */
+    public function sendReceipt(string $roomId, string $eventId) {
+        $body = [
+            'm.fully_read' => $eventId,
+        ];
+
+        return $this->sendMessageEvent($roomId, 'read_markers', $body);
+    }
+
+
     /**
      * Perform PUT /rooms/$room_id/send/m.room.message with m.notice msgtype
      *
@@ -854,6 +897,26 @@ class MatrixHttpApi {
             'msgtype' => $msgType,
             'body' => $textContent,
         ];
+    }
+
+
+    /**
+     * Return basic body of "m.relates_to" events
+     *
+     * @param string $relType Relation type
+     * @param string $eventId Event ID to which to relate
+     * @param array|null $additionalData
+     * @return array
+     */
+    public function getRelationshipBody(string $relType, string $eventId, ?array $additionalData = []) {
+        $base = [
+            'm.relates_to' => [
+                'rel_type' => $relType,
+                'event_id' => $eventId,
+            ],
+        ];
+
+        return array_merge($base['m.relates_to'], $additionalData);
     }
 
     private function getEmoteBody(string $textContent): array {
