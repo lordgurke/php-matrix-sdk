@@ -1,10 +1,9 @@
 # Matrix client SDK for PHP
 [![Software License][ico-license]](LICENSE.md)
-[![Software Version][ico-version]](https://packagist.org/packages/meet-kinksters/php-matrix-sdk)
 ![Software License][ico-downloads]
 
 This is a Matrix client-server SDK for php 7.4+, initially copied from
-[matrix-org/matrix-python-sdk][python-pck].
+[matrix-org/matrix-python-sdk][python-pck], then forked by lordgurke.
 
 This package is still a work in progress, and at the current time, not everything has been ported:
 - Missing E2E encryption, need php bindings for the OLM library
@@ -13,8 +12,9 @@ This package is still a work in progress, and at the current time, not everythin
 
 ## Installation
 
+Currently not public!
 ```
-composer require meet-kinksters/php-matrix-sdk
+composer require lordgurke/php-matrix-sdk:master-dev
 ```
 
 ## Usage
@@ -75,7 +75,7 @@ instead of using the issue tracker.
 
 [MIT License](LICENSE.md).
 
-[ico-version]: https://img.shields.io/packagist/v/meet-kinksters/php-matrix-sdk.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/lordgurke/php-matrix-sdk.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/meet-kinksters/php-matrix-sdk.svg?style=flat-square
+[ico-downloads]: https://img.shields.io/packagist/dt/lordgurke/php-matrix-sdk.svg?style=flat-square
 [python-pck]: https://github.com/matrix-org/matrix-python-sdk
